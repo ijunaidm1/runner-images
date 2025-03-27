@@ -17,7 +17,7 @@ jobs:
       - name: Unlock Keychain
         run: |
           echo "Unlocking the keychain..."
-          security unlock-keychain -p "" /Users/runner/Library/Keychains/login.keychain-db
+          security unlock-keychain -p "xyz" /Users/runner/Library/Keychains/login.keychain-db
 
       # Step to verify code signing certificate installation
       - name: Verify Code Signing Certificate
