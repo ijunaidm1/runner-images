@@ -1,0 +1,26 @@
+name: Verify WWDR Certificate Installation
+
+on:
+  push:
+    branches:
+      - main  # You can change this to any branch or event you want to trigger the workflow on.
+
+jobs:
+  verify-wwdr-certificate:
+    runs-on: macos-15  # Use macOS runner for this job
+    steps:
+      # Step to checkout the code from your repository (if needed)
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step to unlock the keychain
+      - name: Unlock Keychain
+        run: |
+          echo "Unlocking the keychain..."
+          security unlock-keychain -p "" /Users/runner/Library/Keychains/login.keychain-db
+
+      # Step to verify WWDR certificate installation
+      - name: Verify WWDR Certificate
+        run: |
+          echo "Checking for installed WWDR certificate..."
+          security find-certificate -a -c "Apple Worldwide Developer Relations Certification Authority" /Library/Keychains/System.keychain
