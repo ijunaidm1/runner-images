@@ -1,0 +1,20 @@
+name: Verify Code Signing Certificate
+
+on:
+  push:
+    branches:
+      - main  # You can change this to any branch or event you want to trigger the workflow on.
+
+jobs:
+  verify-certificate:
+    runs-on: macos-15-large	  # Use macOS runner for this job
+    steps:
+      # Step to checkout the code from your repository (if needed)
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step to verify code signing certificate installation
+      - name: Verify Code Signing Certificate
+        run: |
+          echo "Checking for installed code signing identities..."
+          security find-identity -v -p codesigning /Users/runner/Library/Keychains/login.keychain-db
