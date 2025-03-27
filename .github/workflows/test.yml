@@ -7,7 +7,7 @@ on:
 
 jobs:
   verify-certificate:
-    runs-on: macos-15-large	  # Use macOS runner for this job
+    runs-on: macos-15	  # Use macOS runner for this job
     steps:
       # Step to checkout the code from your repository (if needed)
       - name: Checkout code
